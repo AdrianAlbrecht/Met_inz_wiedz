@@ -108,7 +108,28 @@ grupy = grupujemy(k_nn_lista(matrix, 14, [1,1,1,1,1,1,1,1,1,1,1,1,1,1]),5)
 print(grupy[0])
 print(grupy[1])
 
+############## DO DOMU 2 ################
 # minimum odleglosci do klasy
 def decyzja(slownik):
-    
+    klucze = list(slownik.keys())
+    ilosc = 1
+    klasa = klucze[0]
+    minimum = slownik[klucze[0]]
+    for key in klucze[1:]:
+        if minimum > slownik[key]:
+            minimum = slownik[key]
+            klasa = key
+            ilosc=1
+        elif minimum == slownik[key]:
+            ilosc+=1
+    if ilosc > 1:
+        return 
+    return klasa
+
+print("Decyzja:",decyzja(grupy))
+print("######################################")
+slownik_testowy_null = {0.0:4,1.0:4,2.0:6}
+slownik_testowy_2 = {0.0:4,1.0:4,2.0:3}
+print("Decyzja:",decyzja(slownik_testowy_null))
+print("Decyzja:",decyzja(slownik_testowy_2))
         
