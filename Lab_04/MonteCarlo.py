@@ -27,10 +27,10 @@ def montecarlo(foo,foo2, fx, lx, eps):
     return wyliczone
 
 def f2(x):
-    return x**3/3
+    return x**2/2
 
 def f(x):
-    return x**2
+    return x
 
 #aproksymacją dolną
 def prostokaty(foo,foo2, fx, lx, eps):
@@ -83,7 +83,7 @@ def prostokaty3(foo,foo2, fx, lx, eps):
         
         
         
-#print(montecarlo(f,f2, 0, 10, 0.01))  ###zakomentowane bo długo trwa (może co nie tak działa???)
-print(prostokaty(f,f2, 0, 10, 0.01))
-print(prostokaty2(f,f2, 0, 10, 0.01))
-print(prostokaty3(f,f2, 0, 10, 0.01))
+print(montecarlo(f,f2, 0, 1, 0.05))  ###zakomentowane bo długo trwa (może co nie tak działa???)
+print(prostokaty(f,f2, 0, 1, 0.01))
+print(prostokaty2(f,f2, 0, 1, 0.01))
+print(prostokaty3(f,f2, 0, 1, 0.01))
