@@ -1,10 +1,15 @@
 import math as m
 import numpy as np
 
+float_formatter = "{:.4f}".format
+np.set_printoptions(formatter={'float_kind':float_formatter})
+
 
 def projection(u,v):
     u_v = np.dot(u.T,v)
     u_u = np.dot(u.T,u)
+    if u_u==0:
+        return u
     return (u_v/u_u)*u
 
 
@@ -13,7 +18,7 @@ def matrix_len(u):
 
 
 # given
-a=np.array([[1,0],[1,1],[0,1]])
+a=np.array([[2,0],[0,1],[1,2]])
 
 # when
 v_list=[ [ x[i] for x in a ] for i in range(len(a[1])) ]
@@ -28,13 +33,16 @@ for v in v_list:
         sum_proj+=projection(u_x, v)
     u = v - sum_proj
     u_list.append(u)
-    e = (1/matrix_len(u))*u
+    if matrix_len(u)==0:
+        e=u
+    else:
+        e = (1/matrix_len(u))*u
     q.append(e)
     
 q = np.array(q).T
 r = np.dot(q.T,a)
 
-new_a = np.round(np.dot(q,r),decimals=8)
+new_a = np.dot(q,r)
         
 
 # then
