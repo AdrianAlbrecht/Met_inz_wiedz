@@ -18,7 +18,7 @@ def matrix_len(u):
 
 
 # given
-a=np.array([[2,0],[0,1],[1,2]])
+a=np.array([[2,0],[0,1],[1,1]])
 
 # when
 v_list=[ [ x[i] for x in a ] for i in range(len(a[1])) ]
