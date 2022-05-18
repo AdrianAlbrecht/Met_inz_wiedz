@@ -61,7 +61,7 @@ def gauss(matrix):
 
     for x in range(column_len):
         if matrix[x][x] == 0:
-            raise ZeroDivisionError()
+            raise ZeroDivisionError() # here should use homogeneous system
             
         for y in range(column_len):
             if x != y:
@@ -86,18 +86,16 @@ print(a)
 wynik = matrix_eigenvalues(a)
 w_wlasne = np.diag(wynik)
 print("================ WARTOSCI WLASNE ================", np.round(w_wlasne,decimals=3), sep = "\n")
-z = np.zeros((5,1))
 print("================ WEKTORY WLASNE ================")
 for x in range(len(w_wlasne)):
-    print("================ ",w_wlasne[x]," ================")
+    print("================ λ",x,":",w_wlasne[x],"================")
     wynik_temp= a.copy()
     for i in range(len(wynik.T[0])):
         wynik_temp[i][i]-=w_wlasne[x]
-    wynik_temp = np.append(wynik_temp,z,axis=1)
     print(wynik_temp)
     wynik_temp= np.delete(wynik_temp,i,0)
     print("***wektor wlasny: ***")
-    wek_wlasn = gauss(wynik_temp)+[-1]
+    wek_wlasn = gauss(wynik_temp)+[-1.0]
     wek_wlasn = [round(y*-1,4) for y in wek_wlasn]
     print(wek_wlasn)
     
