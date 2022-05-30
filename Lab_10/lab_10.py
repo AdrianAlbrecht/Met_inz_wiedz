@@ -16,11 +16,8 @@ b = np.dot(a,a.T)
 c = []
 temp = 0
 for row in a:
-    temp=0
-    for y in row:
-        temp+=abs(y)
-    c.append(temp)
-#print(b)
+    c.append(np.dot(np.array(row),np.array(row).T))
+print(b)
 print(all(c==np.diag(b)))
 
 #macierz ortonormalna
